@@ -49,7 +49,7 @@
 
     function doLogin() {
 
-        hello( 'google' ).login({display: 'popup', scope: 'openid,email', response_type : 'token', force:false}).then(function(){google.api('me').then(handler)})
+        hello( 'google' ).login({display: 'popup', scope: 'openid,email', response_type : 'token', force:true}).then(function(){google.api('me').then(handler)})
 
         hello.on('auth.login', function(auth){
 

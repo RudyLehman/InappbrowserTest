@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
+<widget xmlns="http://www.w3.org/ns/widgets"
+        xmlns:gap="http://phonegap.com/ns/1.0"
+        id="com.phonegap.cameratest"
+        version="1.0.0">
+
+    <name>Inappbrowsertest</name>
+
+    <description>
+        Phonegap Build Inappbrowsertest
+    </description>
+
+    <author href="http://rudylehman.com" email="rudy@rudylehman.com">
+        Rudy Lehman
+    </author>
+
+    <content src="index.html"/>
+    <access origin="*"/>
+
+    <preference name="phonegap-version" value="3.6.3" />
+
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.2" />
+
+    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+
+
+</widget>

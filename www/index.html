@@ -5,6 +5,8 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
+    <script src="hello.all.js"></script>
+
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -19,10 +21,59 @@
 <br>
 <a href="#" onclick="doTest()">test</a>
 
+<br>
+<br>
+<a href="#" onclick="doInit()">Hello init</a>
+
+<br>
+<br>
+<a href="#" onclick="doLogin()">Google Login</a>
+
+<br>
+<br>
+<a href="#" onclick="doLogout()">Logout</a>
+
 <script>
 
     function doTest() {
         var ref = window.open('http://apache.org', '_blank', 'location=yes');
+    }
+
+    function doInit () {
+
+        hello.init({
+            google   : "30575979654-ofm698smvu16lvra09p4mfbvdtnm0qqn.apps.googleusercontent.com"
+        },{redirect_uri:'../redirect.html', scope : 'email,contacts'});
+
+    }
+
+    function doLogin() {
+
+        hello( 'google' ).login({display: 'popup', scope: 'openid,email', response_type : 'token', force:false}).then(function(){google.api('me').then(handler)})
+
+        hello.on('auth.login', function(auth){
+
+//            console.log('auth');
+//            console.log(auth);
+
+            // call user information, for the given network
+            hello( auth.network ).api( '/me' ).then( function(r){
+
+//                console.log(r);
+//                console.log(r.displayName);
+
+                alert(r.displayName);
+
+
+            });
+        });
+
+    }
+
+    function doLogout() {
+        hello('google').logout( function() {
+
+        });
     }
 
 </script>
